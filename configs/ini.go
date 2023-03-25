@@ -12,7 +12,7 @@ func IniSetup() {
 	if !isIniInitOnce {
 		var err error
 		IniData, err = ini.Load("config.ini")
-		common.IsErr(err, "Error loading .ini file")
+		common.IsErr(err, true, "Error loading .ini file")
 		isIniInitOnce = true
 	} else {
 		println("initialized inis once")

@@ -11,7 +11,7 @@ var IsInitOnce = false
 func EnvSetup() {
 	if !IsInitOnce {
 		err := godotenv.Load()
-		common.IsErr(err, "Error loading .env file")
+		common.IsErr(err, true, "Error loading .env file")
 		IsInitOnce = true
 	} else {
 		println("initialized envs once")

@@ -23,15 +23,15 @@ func GetDBClint() *mongo.Client {
 func ConnectDB() *mongo.Client {
 	EnvSetup()
 	client, err := mongo.NewClient(options.Client().ApplyURI(EnvMongoURI()))
-	common.IsErr(err)
+	common.IsErr(err, true)
 
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	err = client.Connect(ctx)
-	common.IsErr(err)
+	common.IsErr(err, true)
 
 	//ping the database
 	err = client.Ping(ctx, nil)
-	common.IsErr(err)
+	common.IsErr(err, true)
 
 	fmt.Println("Connected to MongoDB")
 	DB = client
