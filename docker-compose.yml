@@ -1,28 +1,28 @@
 # ports: HOST:CONTAINER
 version: '3.8'
 services:
-#  go:
-#    build: .
-#    container_name: ${APP_NAME}-go
-#    restart: unless-stopped
-#    environment:
-#      - VIRTUAL_HOST=${APP_URL}
-#      - VIRTUAL_PORT=80
-#    depends_on:
-#      - mongo
-#    ports:
-#      - 8082:80
-#    networks:
-#      - internal
-#    develop:
-#      watch:
-#        - action: sync
-#          path: ./
-#          target: /
-#          ignore:
-#            - .git/
-#            - .idea/
-#            - mongo/
+  go:
+    build: .
+    container_name: ${APP_NAME}-go
+    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST=${APP_URL}
+      - VIRTUAL_PORT=80
+    depends_on:
+      - mongo
+    ports:
+      - 8082:80
+    networks:
+      - internal
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /
+          ignore:
+            - .git/
+            - .idea/
+            - mongo/
 
   mongo:
     image: mongo
